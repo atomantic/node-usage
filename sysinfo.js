@@ -8,7 +8,8 @@ module.exports = function() {
 
     var availableVersionPaths = [
       // currently 0.10.x is enough (currently look for Meteor)
-      [/v0\.10\..*/, '0.10']
+      [/v0\.10\..*/, '0.10'],
+      [/v0\.11\..*/, '0.11']
     ];
 
     var platform = (process.platform == "solaris")? "sunos": process.platform;
@@ -31,8 +32,8 @@ module.exports = function() {
       return require(path);
     } catch(ex) {
       console.warn(
-        'usage: cannot find pre-compiled binary for: %s/%s/%s',
-        platform, arch, version
+        'usage: cannot find pre-compiled binary for %s: %s/%s/%s',
+        version, platform, arch, versionPath
       );
       throw ex;
     }
